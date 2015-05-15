@@ -15,11 +15,8 @@ module AddUpTo100
   end
 
   def self.next_options_for number_or_hash
-    if number_or_hash.is_a?(Hash)
-      options_for_a_hash number_or_hash
-    else
-      options_for_a_number number_or_hash
-    end
+    number_or_hash.is_a?(Hash) ? options_for_a_hash(number_or_hash)
+                               : options_for_a_number(number_or_hash)
   end
 
   def self.options_for_a_number number
