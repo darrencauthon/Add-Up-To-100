@@ -10,4 +10,8 @@ describe "find all possible ways to come up with 100 with 1-9, +'s, and -'s" do
     results.include?("1 + 2 + 34 - 5 + 67 - 8 + 9").must_equal true
   end
 
+  it "should report the results to me" do
+    results.must_equal ''
+  end
+
 end
