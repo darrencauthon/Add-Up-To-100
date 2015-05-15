@@ -27,7 +27,6 @@ module AddUpTo100
       "#{number} - #{next_number}",
     ].map do |x|
       {
-        number:      number,
         next_number: next_number,
         string:      x,
         value:       eval(x),
@@ -44,7 +43,6 @@ module AddUpTo100
       "#{option[:string]} - #{next_number}",
     ].map do |x|
       {
-        number:      number,
         next_number: next_number,
         string:      x,
         value:       eval(x),
