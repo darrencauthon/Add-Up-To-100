@@ -11,6 +11,8 @@ module AddUpTo100
       .map { |o| next_options_for o }.flatten
       .map { |o| next_options_for o }.flatten
       .map { |o| next_options_for o }.flatten
+      .select { |x| x[:value] == 100 }
+      .map { |x| x[:string] }
   end
 
   def self.next_options_for number_or_hash
