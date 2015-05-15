@@ -38,18 +38,18 @@ module AddUpTo100
   def self.options_for_an_option option
     number = option[:next_number]
     next_number = number + 1
-    results = [
-                "#{option[:string]}#{next_number}",
-                "#{option[:string]} + #{next_number}",
-                "#{option[:string]} - #{next_number}",
-              ].map do |x|
-                {
-                  number:      number,
-                  next_number: next_number,
-                  string:      x,
-                  value:       eval(x),
-                }
-              end
+    [
+      "#{option[:string]}#{next_number}",
+      "#{option[:string]} + #{next_number}",
+      "#{option[:string]} - #{next_number}",
+    ].map do |x|
+      {
+        number:      number,
+        next_number: next_number,
+        string:      x,
+        value:       eval(x),
+      }
+    end
   end
 
 end
