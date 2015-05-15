@@ -2,7 +2,6 @@ module AddUpTo100
 
   def self.ways
     next_options_for 1
-    #["1 + 2 + 34 - 5 + 67 - 8 + 9"]
     next_options_for(1)
       .map { |o| next_options_for o }.flatten
       .map { |o| next_options_for o }.flatten
@@ -33,22 +32,23 @@ module AddUpTo100
                   }
                 end
     else
-      number = number_or_hash
+      options_for_a_number number_or_hash
+    end
+  end
 
-      next_number = number + 1
-      [
-        "#{number}#{next_number}",
-        "#{number} + #{next_number}",
-        "#{number} - #{next_number}",
-      ].map do |x|
-        {
-          number:      number,
-          next_number: next_number,
-          string:      x,
-          value:       eval(x),
-        }
-      end
-
+  def self.options_for_a_number number
+    next_number = number + 1
+    [
+      "#{number}#{next_number}",
+      "#{number} + #{next_number}",
+      "#{number} - #{next_number}",
+    ].map do |x|
+      {
+        number:      number,
+        next_number: next_number,
+        string:      x,
+        value:       eval(x),
+      }
     end
   end
 
