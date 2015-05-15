@@ -14,9 +14,9 @@ module AddUpTo100
       .map { |x| x[:string] }
   end
 
-  def self.next_options_for number_or_hash
-    number_or_hash.is_a?(Hash) ? options_for_a_hash(number_or_hash)
-                               : options_for_a_number(number_or_hash)
+  def self.next_options_for number_or_option
+    number_or_option.is_a?(Hash) ? options_for_an_option(number_or_option)
+                                 : options_for_a_number(number_or_option)
   end
 
   def self.options_for_a_number number
@@ -35,13 +35,13 @@ module AddUpTo100
     end
   end
 
-  def self.options_for_a_hash hash
-    number = hash[:next_number]
+  def self.options_for_an_option option
+    number = option[:next_number]
     next_number = number + 1
     results = [
-                "#{hash[:string]}#{next_number}",
-                "#{hash[:string]} + #{next_number}",
-                "#{hash[:string]} - #{next_number}",
+                "#{option[:string]}#{next_number}",
+                "#{option[:string]} + #{next_number}",
+                "#{option[:string]} - #{next_number}",
               ].map do |x|
                 {
                   number:      number,
