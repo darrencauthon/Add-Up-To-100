@@ -3,9 +3,14 @@ module AddUpTo100
   def self.ways
     next_options_for 1
     #["1 + 2 + 34 - 5 + 67 - 8 + 9"]
-    next_options_for(1).map do |option|
-      next_options_for(option)
-    end.flatten.map { |x| x[:string] }
+    next_options_for(1)
+      .map { |o| next_options_for o }.flatten
+      .map { |o| next_options_for o }.flatten
+      .map { |o| next_options_for o }.flatten
+      .map { |o| next_options_for o }.flatten
+      .map { |o| next_options_for o }.flatten
+      .map { |o| next_options_for o }.flatten
+      .map { |o| next_options_for o }.flatten
   end
 
   def self.next_options_for number_or_hash
