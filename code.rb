@@ -1,7 +1,7 @@
 module AddUpTo100
 
   def self.ways
-    results = next_options_for(1)
+    results = next_options_for 1
     7.times { results = results.map { |o| next_options_for o[:next_number], o[:statement] }.flatten }
     results.select { |x| x[:value] == 100 }
            .map    { |x| x[:statement] }
@@ -9,7 +9,7 @@ module AddUpTo100
 
   def self.next_options_for number, statement = nil
     next_number = number + 1
-    statement = number unless statement
+    statement   = number unless statement
     [
       "#{statement}#{next_number}",
       "#{statement} + #{next_number}",
