@@ -16,21 +16,7 @@ module AddUpTo100
 
   def self.next_options_for number_or_hash
     if number_or_hash.is_a?(Hash)
-      hash = number_or_hash
-      number = hash[:next_number]
-      next_number = number + 1
-      results = [
-                  "#{hash[:string]}#{next_number}",
-                  "#{hash[:string]} + #{next_number}",
-                  "#{hash[:string]} - #{next_number}",
-                ].map do |x|
-                  {
-                    number:      number,
-                    next_number: next_number,
-                    string:      x,
-                    value:       eval(x),
-                  }
-                end
+      options_for_a_hash number_or_hash
     else
       options_for_a_number number_or_hash
     end
@@ -50,6 +36,23 @@ module AddUpTo100
         value:       eval(x),
       }
     end
+  end
+
+  def self.options_for_a_hash hash
+    number = hash[:next_number]
+    next_number = number + 1
+    results = [
+                "#{hash[:string]}#{next_number}",
+                "#{hash[:string]} + #{next_number}",
+                "#{hash[:string]} - #{next_number}",
+              ].map do |x|
+                {
+                  number:      number,
+                  next_number: next_number,
+                  string:      x,
+                  value:       eval(x),
+                }
+              end
   end
 
 end
