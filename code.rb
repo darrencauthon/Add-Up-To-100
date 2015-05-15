@@ -1,16 +1,10 @@
 module AddUpTo100
 
   def self.ways
-    next_options_for(1)
-      .map    { |o| next_options_for o[:next_number], o[:statement] }.flatten
-      .map    { |o| next_options_for o[:next_number], o[:statement] }.flatten
-      .map    { |o| next_options_for o[:next_number], o[:statement] }.flatten
-      .map    { |o| next_options_for o[:next_number], o[:statement] }.flatten
-      .map    { |o| next_options_for o[:next_number], o[:statement] }.flatten
-      .map    { |o| next_options_for o[:next_number], o[:statement] }.flatten
-      .map    { |o| next_options_for o[:next_number], o[:statement] }.flatten
-      .select { |x| x[:value] == 100 }
-      .map    { |x| x[:statement] }
+    results = next_options_for(1)
+    7.times { results = results.map { |o| next_options_for o[:next_number], o[:statement] }.flatten }
+    results.select { |x| x[:value] == 100 }
+           .map    { |x| x[:statement] }
   end
 
   def self.next_options_for number, statement = nil
