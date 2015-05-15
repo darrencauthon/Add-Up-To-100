@@ -11,7 +11,7 @@ module AddUpTo100
       .map { |o| next_options_for o }.flatten
       .map { |o| next_options_for o }.flatten
       .select { |x| x[:value] == 100 }
-      .map { |x| x[:string] }
+      .map { |x| x[:statement] }
   end
 
   def self.next_options_for number_or_option
@@ -28,7 +28,7 @@ module AddUpTo100
     ].map do |x|
       {
         next_number: next_number,
-        string:      x,
+        statement:   x,
         value:       eval(x),
       }
     end
@@ -38,13 +38,13 @@ module AddUpTo100
     number = option[:next_number]
     next_number = number + 1
     [
-      "#{option[:string]}#{next_number}",
-      "#{option[:string]} + #{next_number}",
-      "#{option[:string]} - #{next_number}",
+      "#{option[:statement]}#{next_number}",
+      "#{option[:statement]} + #{next_number}",
+      "#{option[:statement]} - #{next_number}",
     ].map do |x|
       {
         next_number: next_number,
-        string:      x,
+        statement:   x,
         value:       eval(x),
       }
     end
