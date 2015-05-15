@@ -1,7 +1,6 @@
 module AddUpTo100
 
   def self.ways
-    next_options_for 1
     next_options_for(1)
       .map { |o| next_options_for o }.flatten
       .map { |o| next_options_for o }.flatten
